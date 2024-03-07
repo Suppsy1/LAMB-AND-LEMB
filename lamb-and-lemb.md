@@ -1,4 +1,4 @@
-# LAMB AND LEMB
+# LAMB 
 
 ## Installing apache and updating the firewall
 
@@ -64,3 +64,70 @@ On web ![public Address](./images/curl-on-web.PNG)
 
 
 `mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");` and `mysql> SELECT * FROM example_database.todo_list;> SHOW DATABASES` To create Todo_list on MYSQL console ![Mysql Todo_list](./images/mysql%20todolist.PNG)
+
+
+
+
+# LEMB
+
+## Installing the Nginx web server
+
+`sudo apt update` to update all the list of server's packages ![Sudo Apt Update](./images/SUDO_APP.PNG)
+
+`sudo apt instal nginx` to install the nginx package ![Installing nginx](./images/install%20nginx.PNG)
+
+`sudo ufw app list` to check the UFW profile available ![nginx list](./images/nginx%20list.PNG)
+
+`sudo ufw allow 'Nginx HTTP` to enable port 80 and `sudo ufw status` to verify it ![Allowing port 80](./images/nginx%20allowing%20port%2080.PNG)
+
+
+ `http://13.40.113.52/` to show the landing page of nginx ! [nginx landing page](./images/nginx%20landing%20page.PNG)
+
+`sudo systemctl status apache2 ` to confrim if the apache is running as a service in our operating system ![Apache Status](./images/Apache-status.PNG)
+
+`local host and public adress` To access the server locally and also test how our Apache HTTP server can respond to requests from the Internet ![Public Address](./images/curl-on-terminal.PNG)
+
+On web ![public Address](./images/curl-on-web.PNG)
+
+## Installing mysql
+
+`sudo apt install mysql-server` to acquire and install mysql server ![Mysql Server](./images/installing%20mysql%20l.PNG) 
+
+`sudo mysql_secure_installation` Changing the default password ![default password](./images/mysql%20default%20password.PNG)
+
+`sudo mysql` to login into MYSQL console ![Login](./images/logging%20in%20mysql.PNG)
+
+
+
+
+
+## Installing PHP
+
+`sudo apt install php8.1-fpm php-mysql` Installing PHP ![Install PHP](./images/php%20installation%20for%20nginx.PNG)
+
+
+## Configuring Nginx to use the PHP Processor
+
+`sudo mkdir /var/www/your_domain` Creating a virtual host and also creating the directory for project lamb, `sudo chown -R $USER:$USER /var/www/your_domain` to assign ownership of the directory using the $USER, and `sudo nano /etc/nginx/sites-available/your_domain` to create the nano editor for Nginx sites ![VIRTUAL HOST USING NGINX](./images/nginx%20virtual%20host.PNG)
+
+
+`sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/` To activate configuration by linking the configuration file, `sudo unlink /etc/nginx/sites-enabled/default` to unlink the default configuration fromthe directory, `sudo nginx -t` to check for synthax error, `sudo systemctl reload nginx` to reload nginx and  `nano /var/www/your_domain/index.html` to create the html file ![index.html](./images/nginx%20index.html)
+
+`http://18.134.177.239/` landing page for nginx on web ![VIRTUAL HOST USING APACHE](./images/NGINX%20WEB%20LANDING%20PAGE.PNG)
+
+
+## Testing PHP with Nginx
+
+`nano /var/www/your_domain/info.php` to test PHP with Nginx ![NGINX PHP TESTING](./images/testing%20php%20with%20nginx%20result.PNG) 
+
+
+`http://18.132.10.118/info.php` Web landing page for PHP with Nginx ![NGINX PHP TESTING WEB LANDING PAGE](./images/testing%20php%20with%20nginx%20WEB%20result.PNG)
+
+
+## Testing Database connection from PHP
+
+`SHOW DATABASES;` and `SELECT * FROM example_database.todo_list;`  to create database and also update the added list ![DATABASE](./images/mysql%20show%20databse%20and%20update%20database.PNG)
+
+
+`nano /var/www/your_domain/todo_list.php` to connect to the MySQL database and queries for the content of the todo_list ![QUERIES FOR TODO LIST](./images/PHP%20LAST%20LAST.PNG) 
+
